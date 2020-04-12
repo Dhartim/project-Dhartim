@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- TODO: Change title -->
+    <title>Website Template</title>
+
+    <!-- Load Bulma from CDN (consider saving it to repository instead) -->
+    <!-- https://bulma.io/ -->
+    <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/simplex/bulmaswatch.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Load Font Awesome 5 (free) icons -->
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </head>
+
+  <body>
+
+  <!-- Page header -->
+  <!-- https://bulma.io/documentation/layout/hero/ -->
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">Endangered Species in Red List </h1>
+        <h2 class="subtitle">Shows visualization of species in IUCN Red List</h2>
+      </div>
+    </div>
+  </section>
+  <!-- End page header -->
+
+  <!-- Page navigation -->
+  <!-- https://bulma.io/documentation/components/navbar/ -->
+  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <!-- TODO: Change link to repository homepage if needed -->
+        <!-- TODO: Change which navbar-item is-active if needed -->
+        <a class="navbar-item" href="index.html">
+          <span class="icon"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="main-menu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="main-menu" class="navbar-menu has-text-weight-medium">
+        <!-- Left navbar items -->
+        <div class="navbar-start">
+          <a class="navbar-item is-active" href="data.html" title="Data">
+            <span class="icon"><i class="fas fa-table"></i></span>
+            <span>Data</span>
+          </a>
+
+          <!-- TODO: Modify or remove dropdown -->
+          <a class="navbar-item" href="prototype.html">
+            <span class="icon"><i class="fas fa-home"></i></span>
+            <span>Prototype</span>
+          </a>
+            <a class="navbar-item" href="visualization.html">
+              <span class="icon"><i class="fas fa-home"></i></span>
+              <span>Visualizations</span>
+            </a>
+        </div>
+
+        <!-- Right navbar items -->
+        <div class="navbar-end">
+          <a class="navbar-item" href="about.html" title="About">
+            <span class="icon"><i class="fas fa-info-circle"></i></span>
+            <span>About</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- End page navigation -->
+
+  <section class="section">
+    <div class="container">
+      <!-- Begin page content -->
+      <div class="content">
+        <h2 id="data">Data</h2>
+
+        <p>Data can be found in .PDF format on
+          <a href="https://www.iucnredlist.org/resources/summary-statistics#Summary%20Tables">IUCN Summary</a> website and was fetched on 10th April, 2020.</p>
+        <blockquote>
+          <p>
+            "This data is made available for public use and it's license and citation information can be found <a href="https://www.iucnredlist.org/about/citationinfo">here</a>"
+          </p>
+          <cite>IUCN (International Union for Conservation of Nature) 2019. The IUCN Red List of Threatened Species. Version 2020-1. http://www.iucnredlist.org. Downloaded on 10 April 2020.</cite>
+        </blockquote>
+
+        <p>For this project, merge more than two dataset, cleaned and wrangle data to create useful data for visualization.</p>
+        Files use are Table 6a: Red List Category summary country totals (Animals) and Table 5: Threatened species in each country (totals by taxonomic group) which an be found <a href="https://www.iucnredlist.org/resources/summary-statistics#Summary%20Tables">here</a>
+        <!-- TODO:// create table from list  -->
+        <div class="table-container">
+          <table class="table is-hoverable">
+            <thead>
+              <tr>
+                <th class="is-primary">Column Name</th>
+                <th class="is-primary">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Country:</td>
+                <td>Names of Country</td>
+              </tr>
+              <tr>
+                <td>Mammals:</td>
+                <td>Names of Country</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ol>
+          <ul><strong>Table 5: Threatened species in each country (totals by taxonomic group)</strong></ul>
+            <ol>
+              <li><strong></strong> .</li>
+              <li><strong></strong> Number of Mammals Threatened in each country.</li>
+              <li><strong>Birds:</strong> Number of Birds Threatened in each country.</li>
+              <li><strong>Fishes:</strong> Number of Fishes Threatened in each country.</li>
+              <li><strong>Amphibians:</strong> Number of Amphibians Threatened in each country.</li>
+              <li><strong>Reptiles:</strong> Number of Reptiles Threatened in each country.</li>
+              <li><strong>Molluscs:</strong> Number of Molluscs Threatened in each country.</li>
+              <li><strong>Plants:</strong> Number of Plants Threatened in each country.</li>
+              <li><strong>Fungi and Protist:</strong> Number of Fungi and Protist Threatened in each country.</li>
+              <li><strong>Total:</strong> Number of Total species Threatened in each country.</li>
+          </ol>
+        <ul><strong>Table 6a: Red List Category summary country totals (Animals)</strong></ul>
+            <ol>
+              <li><strong>Country:</strong> Name of countries.</li>
+              <li><strong>EX:</strong> Number of Extinct species in each country.</li>
+              <li><strong>EW:</strong> Number of Species Extinct in Wild in each country.</li>
+              <li><strong>Subtotal:</strong> Total Number of Species Extinct in each country.</li>
+              <li><strong>CR(PE):</strong> The tags 'Possibly Extinct' have been developed to identify Critically Endangered species that are likely already extinct, but require more investigation to confirm this.</li>
+              <li><strong>CR(PEW):</strong> The tags 'Possibly Extinct in the Wild' have been developed to identify Critically Endangered species that are likely extinct in the wild, but require more
+investigation to confirm this.</li>
+              <li><strong>Subtotal(EX+EW+
+CR(PE)+CR(PEW)):</strong> Total Number of Species Extinct or Possibly Extinct in each country.</li>
+              <li><strong>CR:</strong>Number of Species Critically Endangered in each country.</li>
+              <li><strong>EN:</strong>Number of Species Endangered in each country.</li>
+              <li><strong>VU:</strong>Number of Species Vulnerable in each country.</li>
+              <li><strong>NT:</strong>Number of Species Near Threatened (includes LR/nt - Lower Risk/near threatened) in each country</li>
+              <li><strong>LR/cd:</strong>Number of Species Lower Risk/conservation dependent in each country.</li>
+              <li><strong>DD:</strong>Number of Species Data deficient in each country.</li>
+              <li><strong>LC:</strong>Number of Species Least Concern (includes LR/lc - Lower Risk, least concern) in each country.</li>
+              <li><strong>Total:</strong>Total Number of Species in Red List in each country.</li>
+            </ol>
+
+        </ol>
+
+        <p>This will of course differ depending on the assignment and data.</p>
+
+        <h3 id="wrangling">Wrangling</h3>
+
+        <p>For this project, used Google sheets and tableau to wrangle dataset. Made one csv file which consist of merged data from above mentioned files</p>
+        <!-- <p>You can alternatively embed a Gist if you want. There is an "embed" button on <a href="https://gist.github.com/octocat/6cad326836d38bd3a7ae">the Gist page</a> and results in something like this:</p> -->
+        <!-- <script src="https://gist.github.com/octocat/6cad326836d38bd3a7ae.js"></script> -->
+
+      </div>
+      <!-- End page content -->
+    </div>
+  </section>
+
+  <!-- Page footer -->
+  <!-- https://bulma.io/documentation/layout/footer/ -->
+  <footer class="footer">
+    <div class="content has-text-centered is-size-7">
+      <p>
+        <a href="#top">
+          <span class="fas fa-arrow-up"></span>
+          <span class="has-text-weight-medium">Back to Top</span>
+        </a>
+      </p>
+
+      <p>
+        <!-- TODO: Change to link to your Github repository -->
+        <a href="https://github.com/usf-cs360-spring2020/template-bulma" class="button is-small" style="padding-left: 1em; padding-right: 1em;">
+          <i class="fab fa-github-alt"></i>&nbsp;<strong>Github</strong>
+        </a>
+
+        <a href="https://fontawesome.com/" class="button is-small" style="padding-left: 1em; padding-right: 1em;">
+          <i class="fab fa-font-awesome"></i>&nbsp;<strong>FontAwesome</strong>
+        </a>
+        <a href="https://d3js.org/" class="button is-small" style="padding: 1em;">
+          <img src="https://raw.githubusercontent.com/d3/d3-logo/master/d3.png" style="height: 20px; padding-left: 5px;">
+        </a>
+
+        <a href="https://bulma.io" class="button is-small">
+          <img src="https://bulma.io/images/made-with-bulma--semiblack.png" alt="Made with Bulma" width="128" height="24">
+        </a>
+      </p>
+    </div>
+  </footer>
+  <!-- End page footer -->
+
+  <!-- Mobile menu responsiveness -->
+  <!-- https://bulma.io/documentation/components/navbar/ -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+    if ($navbarBurgers.length > 0) {
+      $navbarBurgers.forEach( el => {
+        el.addEventListener('click', () => {
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+        });
+      });
+    }
+  });
+  </script>
+  <!-- End mobile menu responsiveness -->
+  </body>
+</html>
