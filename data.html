@@ -58,11 +58,11 @@
 
           <!-- TODO: Modify or remove dropdown -->
           <a class="navbar-item" href="prototype.html">
-            <span class="icon"><i class="fas fa-home"></i></span>
+            <span class="icon"><i class="fas fa-paw"></i></span>
             <span>Prototype</span>
           </a>
             <a class="navbar-item" href="visualization.html">
-              <span class="icon"><i class="fas fa-home"></i></span>
+              <span class="icon"><i class="fas fa-chart-area"></i></span>
               <span>Visualizations</span>
             </a>
         </div>
@@ -91,12 +91,22 @@
           <p>
             "This data is made available for public use and it's license and citation information can be found <a href="https://www.iucnredlist.org/about/citationinfo">here</a>"
           </p>
-          <cite>IUCN (International Union for Conservation of Nature) 2019. The IUCN Red List of Threatened Species. Version 2020-1. http://www.iucnredlist.org. Downloaded on 10 April 2020.</cite>
+           <cite>IUCN 2020. IUCN Red List of Threatened Species. Version 2020-1 <www.iucnredlist.org></cite>
+          <!-- <cite>IUCN (International Union for Conservation of Nature) 2020 - Version 1. The IUCN Red List of Threatened Species. Version 2020-1. http://www.iucnredlist.org. Downloaded on 10 April 2020.</cite> -->
         </blockquote>
 
         <p>For this project, merge more than two dataset, cleaned and wrangle data to create useful data for visualization.</p>
-        Files use are Table 6a: Red List Category summary country totals (Animals) and Table 5: Threatened species in each country (totals by taxonomic group) which an be found <a href="https://www.iucnredlist.org/resources/summary-statistics#Summary%20Tables">here</a>
-        <!-- TODO:// create table from list  -->
+        Files used are Table 6a: Red List Category summary country totals (Animals) and Table 5: Threatened species in each country (totals by taxonomic group) which an be found <a href="https://www.iucnredlist.org/resources/summary-statistics#Summary%20Tables">here</a>
+        <p>
+          Some quick stats about the data defined from the website are:<br />
+          <div class="tags is-centered">
+            <span class="tag is-dark is-medium is-rounded"><b>500+</b>&nbsp;Rows**</span>
+            <span class="tag is-dark is-medium is-rounded"><b>25</b>&nbsp;Columns</span>
+            <span class="tag is-dark is-medium is-rounded">Each row is a&nbsp;<b>Threatened species</b></span>
+            <span class="tag is-dark is-medium is-rounded"><b>50KB</b>&nbsp;CSV file size**</span>
+            <span class="tag is-dark is-medium is-rounded">Last Updated (at retrieval):&nbsp;<b>April 10, 2020</b></span>
+          </div>
+        </p>
         <div class="table-container">
           <table class="table is-hoverable">
             <thead>
@@ -230,7 +240,7 @@
         </div>
 
         <p>Also came across API endpoint to access larger dataset from IUCN Red List. Token is generated and used to access data. Link can be found <a href="http://apiv3.iucnredlist.org/">here</a>.
-          Can access data, once token is given via mail from IUCN.
+          <br/>**Can get more data, once token is given via mail from IUCN.
         </p>
 
         <h3 id="wrangling">Wrangling</h3>
