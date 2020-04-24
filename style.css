@@ -20,3 +20,13 @@ img, table {
   border-radius: 5px;
   border-color: white;
 }
+
+.land {
+  fill : grey;
+  stroke : white;
+  stroke-width: 1px;
+}
+
+#tooltip {
+  font-size: 10px;
+}
