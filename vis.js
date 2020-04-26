@@ -28,7 +28,7 @@ let drawMapChart = function(data) {
     //basemap: "countriesList.json"
     basemap: "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson",
     // streets: "https://data.sfgov.org/resource/hn5x-7sr8.geojson?$limit=8000",
-    cases: "animalData.csv"
+    //cases: "newDataset.csv"
 
   };
   // setup path generator (note it is a GEO path, not a normal path)
@@ -41,7 +41,7 @@ let drawMapChart = function(data) {
     // draw the land and neighborhood outlines
     drawBasemap(json);
     //draw data in map
-    d3.csv(urls.cases).then(drawData);
+    drawData(data);
   });
 };
 
@@ -70,9 +70,9 @@ function drawBasemap(json) {
 
 function drawData(data)
 {
+  var TotalCases = d3.map();
   console.log("data from file" , data);
   let colorScale = d3.scaleThreshold()
-    .domain([data["Total Species"]])
     .range(d3.schemeBlues[7]);
 
     //legends

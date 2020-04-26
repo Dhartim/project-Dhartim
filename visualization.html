@@ -15,6 +15,7 @@
     <script src="https://d3js.org/d3-array.v2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
     <script src="vis.js"></script>
+    <script src="dataModified.js"></script>
     <!-- Load Font Awesome 5 (free) icons -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
@@ -114,7 +115,7 @@
           </figcaption>
         </figure>
         <script type="text/javascript">
-          d3.csv("animalData.csv").then(drawMapChart);
+          d3.csv("newDataset.csv", convertRow).then(drawMapChart);
         </script>
         </h1>
         <p>COMING SOON !!!</p>
