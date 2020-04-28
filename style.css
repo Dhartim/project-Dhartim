@@ -22,7 +22,7 @@ img, table {
 }
 
 .land {
-  fill : grey;
+  /* fill : grey; */
   stroke : white;
   stroke-width: 1px;
 }

@@ -10,7 +10,7 @@ function convertRow(row, index)
         out[col] = row[col];
         break;
       default:
-        out[col] = parseInt(row[col]);
+        out[col] = parseFloat(row[col].replace(/,/g, ''));
         break;
     }
   }
