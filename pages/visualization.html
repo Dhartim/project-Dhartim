@@ -9,13 +9,13 @@
     <!-- https://bulma.io/ -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"> -->
     <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/simplex/bulmaswatch.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style/style.css">
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <!-- include d3.js modules -->
     <script src="https://d3js.org/d3-array.v2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
-    <script src="vis.js"></script>
-    <script src="dataModified.js"></script>
+    <script src="../js/vis.js"></script>
+    <script src="../js/dataModified.js"></script>
     <!-- Load Font Awesome 5 (free) icons -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
@@ -41,7 +41,7 @@
       <div class="navbar-brand">
         <!-- TODO: Change link to repository homepage if needed -->
         <!-- TODO: Change which navbar-item is-active if needed -->
-        <a class="navbar-item" href="index.html">
+        <a class="navbar-item" href="../index.html">
           <span class="icon"><i class="fas fa-home"></i></span>
           <span>Home</span>
         </a>
@@ -115,7 +115,7 @@
           </figcaption>
         </figure>
         <script type="text/javascript">
-          d3.csv("newDataset.csv", convertRow).then(drawMapChart);
+          d3.csv("../data/newDataset.csv", convertRow).then(drawMapChart);
         </script>
         </h1>
         <p>COMING SOON !!!</p>

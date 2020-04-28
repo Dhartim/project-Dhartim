@@ -10,7 +10,7 @@
     <!-- https://bulma.io/ -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"> -->
     <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/simplex/bulmaswatch.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style/style.css">
     <!-- Load Font Awesome 5 (free) icons -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
@@ -36,7 +36,7 @@
       <div class="navbar-brand">
         <!-- TODO: Change link to repository homepage if needed -->
         <!-- TODO: Change which navbar-item is-active if needed -->
-        <a class="navbar-item" href="index.html">
+        <a class="navbar-item" href="../index.html">
           <span class="icon"><i class="fas fa-home"></i></span>
           <span>Home</span>
         </a>
@@ -57,11 +57,11 @@
           </a>
 
           <!-- TODO: Modify or remove dropdown -->
-          <a class="navbar-item is-active" href="alpha.html">
+          <a class="navbar-item" href="alpha.html">
             <span class="icon"><i class="fas fa-paw"></i></span>
             <span>Alpha Prototype</span>
           </a>
-          <a class="navbar-item" href="beta.html">
+          <a class="navbar-item is-active" href="beta.html">
             <span class="icon"><i class="fas fa-pastafarianism"></i></span>
             <span>Beta Prototype</span>
           </a>
@@ -91,78 +91,59 @@
       <div class="content">
         <h1 class="title">
           <!-- TODO: Change page title -->
-          Alpha Prototype
+          Beta Prototype
         </h1>
-        <p>Prototypes to show different species are threatened globally</p>
-        <h2>Top 10 countires where species from different Taxonomy is Threatened</h2>
+        <h2>How many Species in IUCN Red List globally compared to Species in each family in IUCN Red List ?</h2>
         <div>
-          <div class='tableauPlaceholder' id='viz1586737062516' style='position: relative'><noscript><a href='#'><img alt=' '
-          src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;To&#47;Top10Countries_15867362615720&#47;Top10Countries&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
-          <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
-          <param name='embed_code_version' value='3' />
-          <param name='site_root' value='' />
-          <param name='name' value='Top10Countries_15867362615720&#47;Top10Countries' />
-          <param name='tabs' value='no' />
-          <param name='toolbar' value='no' />
-          <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;To&#47;Top10Countries_15867362615720&#47;Top10Countries&#47;1.png' />
-          <param name='animate_transition' value='yes' />
-          <param name='display_static_image' value='yes' />
-          <param name='display_spinner' value='yes' />
-          <param name='display_overlay' value='yes' />
-          <param name='display_count' value='yes' /></object></div>
-          <script type='text/javascript'>
-      var divElement = document.getElementById('viz1586737062516');
-      var vizElement = divElement.getElementsByTagName('object')[0];
-      if (divElement.offsetWidth > 800) {
-        vizElement.style.width = '960px';
-        vizElement.style.height = '600px';
-      } else if (divElement.offsetWidth > 500) {
-        vizElement.style.width = '960px';
-        vizElement.style.height = '600px';
-      } else {
-        vizElement.style.width = '100%';
-        vizElement.style.height = '700px';
-      }
-      var scriptElement = document.createElement('script');
-      scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-      vizElement.parentNode.insertBefore(scriptElement, vizElement);
-    </script>
-        </div>
-
-        <h2>Total number of Species threatened Globally</h2>
-        <div>
-            <div class='tableauPlaceholder' id='viz1586737170183' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Wo&#47;WorldCount&#47;WorldCount&#47;1_rss.png'
-              style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+        <div class='tableauPlaceholder' id='viz1587669393443' style='position: relative'><noscript><a href='#'><img alt=' '
+                src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Co&#47;ComparisionofRedListSpeciesinworld&#47;ComparisionofSpecies&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'
+            style='display:none;'>
             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
             <param name='embed_code_version' value='3' />
             <param name='site_root' value='' />
-            <param name='name' value='WorldCount&#47;WorldCount' />
+            <param name='name' value='ComparisionofRedListSpeciesinworld&#47;ComparisionofSpecies' />
             <param name='tabs' value='no' />
             <param name='toolbar' value='no' />
-            <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Wo&#47;WorldCount&#47;WorldCount&#47;1.png' />
+            <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Co&#47;ComparisionofRedListSpeciesinworld&#47;ComparisionofSpecies&#47;1.png' />
             <param name='animate_transition' value='yes' />
             <param name='display_static_image' value='yes' />
             <param name='display_spinner' value='yes' />
             <param name='display_overlay' value='yes' />
-            <param name='display_count' value='yes' /></object></div>
-            <script type='text/javascript'>
-              var divElement = document.getElementById('viz1586737170183');
-              var vizElement = divElement.getElementsByTagName('object')[0];
-              if (divElement.offsetWidth > 800) {
-                vizElement.style.width = '960px';
-                vizElement.style.height = '600px';
-              } else if (divElement.offsetWidth > 500) {
-                vizElement.style.width = '960px';
-                vizElement.style.height = '600px';
-              } else {
-                vizElement.style.width = '100%';
-                vizElement.style.height = '700px';
-              }
-              var scriptElement = document.createElement('script');
-              scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-              vizElement.parentNode.insertBefore(scriptElement, vizElement);
-            </script>
+            <param name='display_count' value='yes' />
+            <param name='filter' value='publish=yes' /></object></div>
+        <script type='text/javascript'>
+          var divElement = document.getElementById('viz1587669393443');
+          var vizElement = divElement.getElementsByTagName('object')[0];
+          if (divElement.offsetWidth > 800) {
+            vizElement.style.width = '1000px';
+            vizElement.style.height = '800px';
+          } else if (divElement.offsetWidth > 500) {
+            vizElement.style.width = '1000px';
+            vizElement.style.height = '800px';
+          } else {
+            vizElement.style.width = '100%';
+            vizElement.style.height = '700px';
+          }
+          var scriptElement = document.createElement('script');
+          scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+          vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        </script>
         </div>
+        <h2>Answer</h2>
+        <p>From this Prototype, it is clearly visible that highest number of Endangered Species in IUCN Red List is in Indonesia, followed by Australia and USA.
+          This is due to a lot of poaching for animals skin in this area to create Handbags and a lot more. While Amphibhians are more Endangered in Mexico or Columbia.
+          Plants and Reptiles have highest number in Madagascar. Fishes have highest number in USA, due to more consumption of sea food.</p>
+        <h2>Encoding</h2>
+        <p>This prototype is created using Tableau. In the prototype, number of Species in Red List in each country is
+          encoded over sequential color range. Darker the color, more number of species are in Red List in that particular country.
+          Also all Endangered species are filtered over select controller, which select species and shows it over map.
+          A basemap consists of countries in the world, on top of basemap IUCN Red List Endangered Species are visualized.</p>
+        <h2>Interactivity</h2>
+        <p>Interactivity will be of filtering which will give change the color on map to show species in IUCN Red List
+          according to respective families and Total Species count across the globe. Details on Demand, as on hover,
+          it shows name of country and count of species in IUCN Red List in that particular country.
+        </p>
+        <img src="../res/interactivity.gif" height="600" width="600"></img>
 
         <h2>Feedback</h2>
         <p>COMING SOON !!!</p>
