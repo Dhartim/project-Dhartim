@@ -53,7 +53,7 @@ function drawBasemap(json, data) {
   console.log("data from file", data);
   let mapData = new Map();
   data.forEach((item,i) => {
-    mapData.set(item["CountryCode"], item["Total Species"]);
+      mapData.set(item["CountryCode"], item["Total Species"]);
   });
 
   console.log("map = ", mapData);
@@ -75,7 +75,7 @@ function drawBasemap(json, data) {
       return color(mapData.get(d.properties.ISO_A3));
   });
   //now figure out how to add filter with respect to drop down
-  
+
   //legends
   // svg.append("text").attr("id", "tooltip").attr("x", 0).attr("y", 280).text("Total Species Count");
   // const defs = svg.append("defs");
