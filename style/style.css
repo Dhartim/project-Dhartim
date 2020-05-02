@@ -30,3 +30,12 @@ img, table {
 #tooltip {
   font-size: 10px;
 }
+
+.symbol
+{
+  fill : #cb181d;
+  fill-opacity: .5;
+  stroke: #fff;
+  stroke-width: .5px;
+  stroke : white;
+}

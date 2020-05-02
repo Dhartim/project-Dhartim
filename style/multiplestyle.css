@@ -1,0 +1,33 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#vis {
+    margin: 0 auto;
+    max-width: 960px;
+    width: 100%;
+}
+#vis g {
+    float: left;
+    position: relative;
+}
+
+#vis path {
+    fill: #2ca25f;
+    stroke: #FFF;
+    stroke-width: 1px;
+}
+
+#vis p.legend {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 11px;
+}
+.land {
+  /* fill : grey; */
+  stroke : white;
+  stroke-width: 1px;
+}

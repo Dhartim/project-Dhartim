@@ -98,8 +98,10 @@
           <!-- TODO: Change page title -->
           Visualizations
           <figure class="figure">
-          <svg id="map" height="600" width="960">
+          <svg id="map" height="900" width="960">
             <g id="basemap"></g>
+            <g id="mammal"></g>
+            <g id="cases"></g>
             <!-- turn off pointer events for certain groups -->
             <!-- <g id="streets" pointer-events="none"></g> -->
             <!-- <g id="outline" pointer-events="none"></g> -->
@@ -109,13 +111,14 @@
             <g id="details" pointer-events="none"></g>
           </svg>
           <figcaption>
+            Dharti
             <!-- <cite>Data Source: <a href="https://data.sfgov.org/City-Infrastructure/311-Cases/vw6y-z8j6">311 Cases for Rec / Park</a> (<a href=" https://data.sfgov.org/Geographic-Locations-and-Boundaries/SF-Find-Neighborhoods/pty2-tcw4">Neighborhoods</a>, <a
                 href="https://data.sfgov.org/Geographic-Locations-and-Boundaries/Streets-Active-and-Retired/3psu-pn9h">Streets</a>)</cite>
             <br />Dharti Madeka -->
           </figcaption>
         </figure>
         <script type="text/javascript">
-          d3.csv("../data/newDataset.csv", convertRow).then(drawMapChart);
+          d3.csv("../data/newData.csv", convertRow).then(drawMapChart);
         </script>
         </h1>
         <p>COMING SOON !!!</p>
