@@ -3,8 +3,8 @@ function drawMapChart()
 
     let svg = d3.select("body")
     .select("#vis")
-    .style("width" , 900)
-    .style("height", 700);
+    // .style("width" , 900)
+    // .style("height", 700);
     // let g = {
     //   basmap : svg.select("g#basemap"),
     //   mammalMap : svg.select("g#mammal")
@@ -23,8 +23,9 @@ function drawMapChart()
     console.log("promises = " , promises);
     Promise.all(promises).then(function(data) {
         console.log(data); //check if all data was loaded
-        // projection.fitExtent([[0, 0], [600, 600]], data[0]);
+        projection.fitExtent([[0, 0], [400, 600]], data[0]);
         visualizeMap(data);
+
         //any code that depends on 'data' goes here
     });
 
@@ -37,7 +38,7 @@ function drawMapChart()
 
 function visualizeMap(data)
 {
-    window.width = 500;
+    window.width = 400;
     window.height = 500;
     geojson = data[0];
     console.log("geo Json = ", geojson)
@@ -56,8 +57,8 @@ function visualizeMap(data)
         }
         // console.log(domainValues);
         let wrapper = visualizationWrapper
-            .append('g')
-            .attr('id' , '#'+data.key)
+            .append('div')
+            .attr('id' , +data.key)
             .style('width' , width)
             .style('height' , height)
             .style('fill' , "yellow");
@@ -72,6 +73,7 @@ function visualizeMap(data)
 
 function createMap(wrapper, geojson, data, domainValues)
 {
+  // console.log(d3.extent(Array.from(domainValues.values())));
   let color = d3.scaleSequential()
     .domain(d3.extent(Array.from(domainValues.values())))
     .interpolator(d3.interpolateReds)
@@ -95,7 +97,39 @@ function createMap(wrapper, geojson, data, domainValues)
                   var value = data.values[d.properties.ISO_A3];
                   return color(value);
           })
-          .attr("class" , "land")
+          .attr('class', function(d) {
+              return d.properties.ADMIN;
+          })
+          //interactivity
+          .on('mouseenter', function(d, i) {
+              notify("."+d.properties.ADMIN, 'select')
+          })
+          // .on('mouseleave', function(d) {
+          //     notify("."+d.properties.ADMIN, 'unselect')
+          // })
+          .on('select', function(self) {
+              var geoData = self.data();
+              console.log("geoData = ", geoData);
+              self.node().parentNode.parentNode.getElementsByTagName('figcaption')[0].innerHTML = data.values[geoData[0].properties.ISO_A3];
+          })
+          // .on('unselect', function(self) {
+          //     self.node().parentNode.parentNode.getElementsByTagName('figcaption')[0].innerHTML = data.key;
+          // })
+
+          //NEED HELP WITH INTERACTIVITY ???
+      function notify(selector, eventName) {
+          let countries = d3.selectAll(selector);
+          // countries.style("fill" , "black");
+          // shape.on(eventName)(shape);
+
+          // console.log("selector = ", selector);
+          // console.log("all selectors = ", d3.selectAll(selector));
+          d3.selectAll("path" + selector)[0].forEach(function(el, i) {
+              console.log(el);
+              var shape = d3.select(el);
+              shape.on(eventName)(shape);
+          });
+      }
 }
 //   console.log(data);
 //   let mapWidth = 200;
