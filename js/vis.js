@@ -8,10 +8,10 @@ let drawMapChart = function(data) {
 
   window.g = {
     basemap: svg.select("g#basemap"),
-    mammalMap : svg.select("g#mammal"),
+    barchart : svg.select("g#mammal"),
     // streets: svg.select("g#streets"),
     // outline: svg.select("g#outline"),
-     cases: svg.select("g#cases"),
+     // cases: svg.select("g#cases"),
     tooltip: svg.select("g#tooltip"),
     details: svg.select("g#details")
   };
@@ -39,7 +39,7 @@ let drawMapChart = function(data) {
   window.path = d3.geoPath().projection(projection);
   d3.json(urls.basemap).then(function(json) {
     // makes sure to adjust projection to fit all of our regions
-    projection.fitExtent([[0, 0], [600, 500]], json);
+    // projection.fitExtent([[0, 0], [600, 500]], json);
     // draw the land and neighborhood outlines
     drawBasemap(json, data);
 
@@ -50,7 +50,7 @@ let drawMapChart = function(data) {
 
 function drawBasemap(json, data) {
   console.log("basemap", json);
-  // console.log("data from file", data);
+  console.log("data from file", data);
   let mapData = new Map();
   data.forEach((item,i) => {
       mapData.set(item["CountryCode"], item["Total Species"]);
@@ -58,10 +58,10 @@ function drawBasemap(json, data) {
 
   // console.log("map = ", mapData);
   // console.log(d3.extent(Array.from(mapData.values())));
-  let color = d3.scaleSequential()
-    .domain(d3.extent(Array.from(mapData.values())))
-    .interpolator(d3.interpolateReds)
-    .unknown("#ddd");
+  // let color = d3.scaleSequential()
+  //   .domain(d3.extent(Array.from(mapData.values())))
+  //   .interpolator(d3.interpolateReds)
+  //   .unknown("#ddd");
 
   const basemap = g.basemap
   .selectAll("path.land")
@@ -70,9 +70,15 @@ function drawBasemap(json, data) {
   .append("path")
   .attr("d", path)
   .attr("class", "land")
-  .attr("fill", function (d) {
-      return color(mapData.get(d.properties.ISO_A3));
+  .on("click", function(d){
+    d3.select(this).raise();
+    d3.select(this).style("fill", "red")
+    drawBarChart(data, d.properties.ISO_A3);
   });
+
+  // .attr("fill", function (d) {
+  //     return color(mapData.get(d.properties.ISO_A3));
+  // });
 
 
 
@@ -105,19 +111,27 @@ function drawBasemap(json, data) {
   // colorLegendG.selectAll('text').attr("class", "text").attr('font-size', "5");
 
   // add tooltip
-  // basemap.on("mouseover.tooltip", function(d) {
-  //   tip.text(d.properties.ADMIN + '\n' + mapData.get(d.properties.ISO_A3));
-  //   tip.style("visibility", "visible");
-  // }).on("mousemove.tooltip", function(d) {
-  //   const coords = d3.mouse(g.basemap.node());
-  //   tip.attr("x", coords[0]);
-  //   tip.attr("y", coords[1]);
-  // }).on("mouseout.tooltip", function(d) {
-  //   tip.style("visibility", "hidden");
-  // });
+  basemap.on("mouseover.tooltip", function(d) {
+    tip.text(d.properties.ADMIN + '\n' + mapData.get(d.properties.ISO_A3));
+    tip.style("visibility", "visible");
+  }).on("mousemove.tooltip", function(d) {
+    const coords = d3.mouse(g.basemap.node());
+    tip.attr("x", coords[0]);
+    tip.attr("y", coords[1]);
+  }).on("mouseout.tooltip", function(d) {
+    tip.style("visibility", "hidden");
+  });
 
 //reference for map https://www.d3-graph-gallery.com/graph/choropleth_basic.html
 //reference for color scheme https://observablehq.com/@d3/color-schemes
+}
+
+function drawBarChart(data, countryCode)
+{
+  console.log(data);
+  console.log(countryCode);
+  
+
 }
 
 // function drawData(csv) {
@@ -174,10 +188,6 @@ function drawBasemap(json, data) {
 //   // colorLegendG.call(colorLegend);
 //   // colorLegendG.selectAll('text').attr("class", "text").attr('font-size', "10");
 // }
-
-function drawMammalMap() {
-
-}
 
 
 function translate(x, y) {

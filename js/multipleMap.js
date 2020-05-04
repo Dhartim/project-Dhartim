@@ -3,15 +3,9 @@ function drawMapChart()
 
     let svg = d3.select("body")
     .select("#vis")
-    // .style("width" , 900)
-    // .style("height", 700);
-    // let g = {
-    //   basmap : svg.select("g#basemap"),
-    //   mammalMap : svg.select("g#mammal")
-    // };
 
     let files = {
-      basemap : "https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson",
+      basemap : "../data/countries.geojson",
       familySpecies : "../data/out1.json"
     };
 
@@ -20,9 +14,9 @@ function drawMapChart()
         promises.push(d3.json(url));
     });
 
-    console.log("promises = " , promises);
+    //console.log("promises = " , promises);
     Promise.all(promises).then(function(data) {
-        console.log(data); //check if all data was loaded
+        // console.log(data); //check if all data was loaded
         projection.fitExtent([[0, 0], [400, 600]], data[0]);
         visualizeMap(data);
 
@@ -41,9 +35,7 @@ function visualizeMap(data)
     window.width = 400;
     window.height = 500;
     geojson = data[0];
-    console.log("geo Json = ", geojson)
     csvData = data[1];
-    console.log("csv Data = ", csvData)
 
     var visualizationWrapper = d3.select('#vis');
     csvData.forEach(function(data, i) {
@@ -58,10 +50,9 @@ function visualizeMap(data)
         // console.log(domainValues);
         let wrapper = visualizationWrapper
             .append('div')
-            .attr('id' , +data.key)
+            // .attr('id' , data.key)
             .style('width' , width)
-            .style('height' , height)
-            .style('fill' , "yellow");
+            .style('height' , height);
 
         createMap(wrapper, geojson , data, domainValues);
     });
@@ -79,12 +70,12 @@ function createMap(wrapper, geojson, data, domainValues)
     .interpolator(d3.interpolateReds)
     .unknown("#ddd");
 
-    wrapper.append('figcaption')
+    wrapper.append('p')
           .text(data.key)
           .attr('class', 'legend');
 
      let svg = wrapper.append('svg')
-        .attr('id' , '#inner'+data.key)
+        // .attr('id' , '#inner'+data.key)
         .style('width', width)
         .style('height', height);
 
@@ -94,41 +85,33 @@ function createMap(wrapper, geojson, data, domainValues)
           .append("path")
           .attr("d", path)
           .style('fill', function(d) {
-                  var value = data.values[d.properties.ISO_A3];
+                  let value = data.values[d.properties.ISO_A3];
                   return color(value);
           })
           .attr('class', function(d) {
-              return d.properties.ADMIN;
+              return d.properties.ISO_A3;
           })
           //interactivity
           .on('mouseenter', function(d, i) {
-              notify("."+d.properties.ADMIN, 'select')
+              notify("."+d.properties.ISO_A3, 'select')
           })
-          // .on('mouseleave', function(d) {
-          //     notify("."+d.properties.ADMIN, 'unselect')
-          // })
+          .on('mouseleave', function(d) {
+              notify("."+d.properties.ISO_A3, 'unselect')
+          })
           .on('select', function(self) {
-              var geoData = self.data();
-              console.log("geoData = ", geoData);
-              self.node().parentNode.parentNode.getElementsByTagName('figcaption')[0].innerHTML = data.values[geoData[0].properties.ISO_A3];
+              let geoData = self.data();
+              self.node().parentNode.parentNode.getElementsByTagName('p')[0].innerHTML = data.values[geoData[0].properties.ISO_A3];
           })
-          // .on('unselect', function(self) {
-          //     self.node().parentNode.parentNode.getElementsByTagName('figcaption')[0].innerHTML = data.key;
-          // })
+          .on('unselect', function(self) {
+              self.node().parentNode.parentNode.getElementsByTagName('p')[0].innerHTML = data.key;
+          })
 
           //NEED HELP WITH INTERACTIVITY ???
       function notify(selector, eventName) {
-          let countries = d3.selectAll(selector);
-          // countries.style("fill" , "black");
-          // shape.on(eventName)(shape);
-
-          // console.log("selector = ", selector);
-          // console.log("all selectors = ", d3.selectAll(selector));
-          d3.selectAll("path" + selector)[0].forEach(function(el, i) {
-              console.log(el);
+          d3.selectAll(selector).nodes().forEach(function(el, i) {
               var shape = d3.select(el);
-              shape.on(eventName)(shape);
-          });
+                    shape.on(eventName)(shape);
+                });
       }
 }
 //   console.log(data);
