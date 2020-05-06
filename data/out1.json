@@ -250,7 +250,7 @@
 			"VUT": 144,
 			"WLF": 92
 		},
-		"key": "Total by Taxonomy*"
+		"key": "Total by Taxonomy"
 	}, {
 		"values": {
 			"DZA": 26,
@@ -503,7 +503,7 @@
 			"VUT": 11,
 			"WLF": 1
 		},
-		"key": "Plants*"
+		"key": "Plants"
 	}, {
 		"values": {
 			"DZA": 45,
@@ -756,7 +756,7 @@
 			"VUT": 22,
 			"WLF": 16
 		},
-		"key": "Fishes*"
+		"key": "Fishes"
 	}, {
 		"values": {
 			"DZA": 3,
@@ -1262,7 +1262,7 @@
 			"VUT": 4,
 			"WLF": 2
 		},
-		"key": "Reptiles*"
+		"key": "Reptiles"
 	}, {
 		"values": {
 			"DZA": 15,
