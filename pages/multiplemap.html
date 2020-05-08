@@ -8,23 +8,95 @@
     <!-- Load Bulma from CDN (consider saving it to repository instead) -->
     <!-- https://bulma.io/ -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"> -->
-
-    <link rel="stylesheet" href="../style/multiplestyle.css">
-    <script src="https://d3js.org/d3-array.v2.min.js"></script>
+    <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/simplex/bulmaswatch.min.css">
+    <link rel="stylesheet" href="../style/style.css">
     <script src="https://d3js.org/d3.v5.min.js"></script>
-     <!-- include d3.js modules -->
-
+    <!-- include d3.js modules -->
+    <script src="https://d3js.org/d3-array.v2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
+    <!-- <script src="../js/vis.js"></script>
+    <script src="../js/dataModified.js"></script> -->
     <script src="../js/multipleMap.js"></script>
     <script src="../js/dataModified.js"></script>
     <!-- Load Font Awesome 5 (free) icons -->
-
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
-  <body>
-    <div id="vis">
-      <!-- <g id="basemap"></g>
-      <g id="mammal"></g> -->
-    </div>
-    <script type="text/javascript"> drawMapChart()</script>
+
+    <body>
+
+    <!-- Page header -->
+    <!-- https://bulma.io/documentation/layout/hero/ -->
+    <section class="hero is-primary is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">Endangered Species in Red List </h1>
+          <h2 class="subtitle">Shows visualization of species in IUCN Red List</h2>
+        </div>
+      </div>
+    </section>
+    <!-- End page header -->
+
+    <!-- Page navigation -->
+    <!-- https://bulma.io/documentation/components/navbar/ -->
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <!-- TODO: Change link to repository homepage if needed -->
+          <!-- TODO: Change which navbar-item is-active if needed -->
+          <a class="navbar-item" href="../index.html">
+            <span class="icon"><i class="fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+
+          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="main-menu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="main-menu" class="navbar-menu has-text-weight-medium">
+          <!-- Left navbar items -->
+          <div class="navbar-start">
+            <a class="navbar-item" href="data.html" title="Data">
+              <span class="icon"><i class="fas fa-table"></i></span>
+              <span>Data</span>
+            </a>
+
+            <!-- TODO: Modify or remove dropdown -->
+            <a class="navbar-item" href="alpha.html">
+              <span class="icon"><i class="fas fa-paw"></i></span>
+              <span>Alpha Prototype</span>
+            </a>
+            <a class="navbar-item" href="beta.html">
+              <span class="icon"><i class="fas fa-pastafarianism"></i></span>
+              <span>Beta Prototype</span>
+            </a>
+              <a class="navbar-item is-active" href="visualization.html">
+                <span class="icon"><i class="fas fa-chart-area"></i></span>
+                <span>Visualizations</span>
+              </a>
+          </div>
+
+          <!-- Right navbar items -->
+          <div class="navbar-end">
+            <!-- TODO: Update as needed -->
+
+            <a class="navbar-item" href="about.html" title="About">
+              <span class="icon"><i class="fas fa-info-circle"></i></span>
+              <span>About</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <svg id="colorLegend" height="100" width="960">
+    </svg>
+    <section class="container">
+      <div id="vis">
+      </div>
+      <script type="text/javascript"> drawMapChart()</script>
+    </section>
     <!-- <script type="text/javascript"> d3.json("../data/out1.json", convertRow).then(drawMapChart)</script> -->
   </body>
 

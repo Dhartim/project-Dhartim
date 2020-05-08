@@ -29,7 +29,8 @@ let drawMapChart = function(data) {
     //basemap: "countriesList.json"
     //basemap: "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson",
     //USE THIS
-    basemap : "https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson"
+    basemap : "../data/countries.geojson"
+
     //basemap : "custom.geojson"
     // basemap : "https://raw.githubusercontent.com/Dhartim/dataviscourse_iucnredlist/horizontal/data/world.json"
     // streets: "https://data.sfgov.org/resource/hn5x-7sr8.geojson?$limit=8000",
@@ -58,10 +59,10 @@ function drawBasemap(json, data) {
 
   // console.log("map = ", mapData);
   // console.log(d3.extent(Array.from(mapData.values())));
-  // let color = d3.scaleSequential()
-  //   .domain(d3.extent(Array.from(mapData.values())))
-  //   .interpolator(d3.interpolateReds)
-  //   .unknown("#ddd");
+  let color = d3.scaleSequential()
+    // .domain(d3.extent(Array.from(mapData.values())))
+    .interpolator(d3.interpolateReds)
+    .unknown("#ddd");
 
   const basemap = g.basemap
   .selectAll("path.land")
@@ -71,6 +72,7 @@ function drawBasemap(json, data) {
   .attr("d", path)
   .attr("class", "land")
   .on("click", function(d){
+    console.log(d3.select(this).data());
     d3.select(this).raise();
     d3.select(this).style("fill", "red")
     drawBarChart(data, d.properties.ISO_A3);
@@ -82,33 +84,33 @@ function drawBasemap(json, data) {
 
 
 
-  //legends
-  // svg.append("text").attr("id", "tooltip").attr("x", 0).attr("y", 280).text("Total Species Count");
-  // const defs = svg.append("defs");
-  //
-  // const linearGradient = defs.append("linearGradient")
-  //   .attr("id", "linear-gradient");
-  //
-  // linearGradient.selectAll("stop")
-  //   .data(color.ticks().map((t, i, n) => ({
-  //     offset: `${100*i/n.length}%`,
-  //     color: color(t)
-  //   })))
-  //   .enter().append("stop")
-  //   .attr("offset", d => d.offset)
-  //   .attr("stop-color", d => d.color);
-  //
-  // svg
-  //   .append('g')
-  //   .append("rect")
-  //   .attr("transform", translate(10, 300))
-  //   .attr("width", width - 3 * 100 - 2 * 100 - 100)
-  //   .attr("height", 5)
-  //   .style("fill", "url(#linear-gradient)");
-  // const colorLegendG = svg.append('g').attr("transform", translate(10,300));
-  // const colorLegend = d3.legendColor().scale(color).shape('circle').shapePadding(2)
-  // colorLegendG.call(colorLegend);
-  // colorLegendG.selectAll('text').attr("class", "text").attr('font-size', "5");
+  // legends
+  svg.append("text").attr("id", "tooltip").attr("x", 0).attr("y", 280).text("Total Species Count");
+  const defs = svg.append("defs");
+
+  const linearGradient = defs.append("linearGradient")
+    .attr("id", "linear-gradient");
+
+  linearGradient.selectAll("stop")
+    .data(color.ticks().map((t, i, n) => ({
+      offset: `${100*i/n.length}%`,
+      color: color(t)
+    })))
+    .enter().append("stop")
+    .attr("offset", d => d.offset)
+    .attr("stop-color", d => d.color);
+
+  svg
+    .append('g')
+    .append("rect")
+    .attr("transform", translate(10, 300))
+    .attr("width", width - 3 * 100 - 2 * 100 - 100)
+    .attr("height", 5)
+    .style("fill", "url(#linear-gradient)");
+  const colorLegendG = svg.append('g').attr("transform", translate(10,300));
+  const colorLegend = d3.legendColor().scale(color).shape('circle').shapePadding(2)
+  colorLegendG.call(colorLegend);
+  colorLegendG.selectAll('text').attr("class", "text").attr('font-size', "5");
 
   // add tooltip
   basemap.on("mouseover.tooltip", function(d) {
@@ -130,10 +132,16 @@ function drawBarChart(data, countryCode)
 {
   console.log(data);
   console.log(countryCode);
-  
+  let map = new Map();
+  data.forEach((item, i) => {
+    if(item["CountryCode"] === countryCode)
+        console.log(item);
+        // map.set(item.keys(), item.values());
+
+// https://observablehq.com/@d3/bar-chart-race-explained DO THIS BEFORE SUBMISSION
+  });
 
 }
-
 // function drawData(csv) {
 //   let color = d3.scaleOrdinal(d3.schemeTableau10);
 //   console.log("data", csv);

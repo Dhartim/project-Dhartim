@@ -1,6 +1,5 @@
 function drawMapChart()
 {
-
     let svg = d3.select("body")
     .select("#vis")
 
@@ -19,8 +18,6 @@ function drawMapChart()
         // console.log(data); //check if all data was loaded
         projection.fitExtent([[0, 0], [400, 600]], data[0]);
         visualizeMap(data);
-
-        //any code that depends on 'data' goes here
     });
 
     // setup projection
@@ -33,7 +30,7 @@ function drawMapChart()
 function visualizeMap(data)
 {
     window.width = 455;
-    window.height = 500;
+    window.height = 400;
     geojson = data[0];
     csvData = data[1];
 
@@ -52,10 +49,47 @@ function visualizeMap(data)
             .append('div')
             .attr('id' , data.key)
             .style('width' , width)
-            .style('height' , height);
-
+            .style('height' , 400);
         createMap(wrapper, geojson , data, domainValues);
     });
+    //legend
+    drawLegend();
+}
+
+function drawLegend() {
+
+  let svg = d3.select("body").select("#colorLegend");
+
+    svg.append("text").attr("id", "tooltip").attr("x", 300).attr("y", 30).text("Species Count over multiple map");
+    svg.append("text").attr("id", "min").attr("x", 275).attr("y", 80).text("min");
+    svg.append("text").attr("id", "max").attr("x", 850).attr("y", 80).text("max");
+    //create legend
+    svg.append("g").attr("id", "legend");
+    let legend = svg.select("g#legend");
+    let legendColor = d3.scaleSequential(d3.interpolateReds)
+      .domain([1915, 2019]);
+
+    const defs = svg.append("defs");
+
+    const linearGradient = defs.append("linearGradient")
+      .attr("id", "linear-gradient");
+
+    linearGradient.selectAll("stop")
+      .data(legendColor.ticks().map((t, i, n) => ({
+        offset: `${100*i/n.length}%`,
+        color: legendColor(t)
+      })))
+      .enter().append("stop")
+      .attr("offset", d => d.offset)
+      .attr("stop-color", d => d.color);
+
+    svg.append('g')
+      .attr("transform", translate(200, 20))
+      .append("rect")
+      .attr('transform', translate(80, 30))
+      .attr("width", 600)
+      .attr("height", 10)
+      .style("fill", "url(#linear-gradient)");
 }
 //https://github.com/kthotav/D3Visualizations/blob/master/New_York_Income_vs_Poverty/js/ny.js
 // http://bl.ocks.org/chrtze/440f276856cf707963f5
@@ -64,8 +98,6 @@ function visualizeMap(data)
 
 function createMap(wrapper, geojson, data, domainValues)
 {
-  // console.log(d3.extent(Array.from(domainValues.values())));
-  // console.log(d3.extent(Array.from(domainValues.values())))
   let color = d3.scaleSequential()
     .domain(d3.extent(Array.from(domainValues.values())))
     .interpolator(d3.interpolateReds)
@@ -78,8 +110,9 @@ function createMap(wrapper, geojson, data, domainValues)
      let svg = wrapper.append('svg')
         .attr('id' , '#inner'+data.key)
         .style('width', width)
-        .style('height', height);
+        .style('height', 400);
 
+          //maps
           svg.selectAll('path')
           .data(geojson.features)
           .enter()
@@ -93,14 +126,23 @@ function createMap(wrapper, geojson, data, domainValues)
           .attr('class', function(d) {
               return d.properties.ISO_A3;
           })
+          .attr("transform", translate(0,-100))
           //interactivity
           .on('mouseenter', function(d, i) {
+              let arr = Object.keys( data.values ).map(function ( key ) { return data.values[key]; });
+              let min = d3.min(arr);
+              let max = d3.max(arr);
+              d3.select("body").select("#colorLegend").select("#max").text(max);
+              d3.select("body").select("#colorLegend").select("#min").text(min);
               let country = d3.select(this);
               country.raise();
               country.classed("active", true);  //d3.select(!this).lower();
-              notify("."+d.properties.ISO_A3, 'select')
+              notify("."+d.properties.ISO_A3, 'select', max, min)
           })
           .on('mouseleave', function(d) {
+            d3.select("body").select("#colorLegend").select("#max").text("max");
+            d3.select("body").select("#colorLegend").select("#min").text("min");
+
             let country = d3.select(this);
             country.lower();
             country.classed("active", false);
@@ -132,6 +174,7 @@ function createMap(wrapper, geojson, data, domainValues)
               self.node().parentNode.parentNode.getElementsByTagName('p')[0].innerHTML = data.key;
           });
 
+
           //call all Interactivity
       function notify(selector, eventName) {
           d3.selectAll(selector).nodes().forEach(function(el, i) {
@@ -140,105 +183,7 @@ function createMap(wrapper, geojson, data, domainValues)
           });
       }
 }
-//   console.log(data);
-//   let mapWidth = 200;
-//   let mapHeight = 300;
-//
-//   // let map = new Map();
-//   // data.forEach((item, i) => {
-//   //   map.set(item["Country"], item["Total Species"]);
-//   // });
-//   //
-//   // console.log("map = ", map);
-//   // let mapObj = Object.fromEntries(map.entries());
-//   // console.log(mapObj);
-//
-//   let svg = d3.select("body").select("#vis");
-//   projection = d3.geoNaturalEarth1();
-//
-//   let path = d3.geoPath().projection(projection);
-//
-//   const urls = {
-//     basemap : "https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson",
-//     csvData : "../data/newData.csv"
-//   };
-//
-//
-//
-//   function visualize(error, data)
-//   {
-//             var visualizationWrapper = d3.select('#vis');
-//             data.forEach(function(data, i) {
-//                 var wrapper = visualizationWrapper
-//                     .append('div')
-//                     .style({
-//                         width: width + 'px',
-//                         height: height + 'px'
-//                     });
-//                     d3.json(urls.basemap).then(function(json) {
-//                       projection.fitExtent([[0, 0], [150, 180]], json);
-//                     // draw the land and neighborhood outlines
-//                     drawBasemap(json, data);
-//                   });
-//             });
-//   }
-//
-//   //console.log(urls.csvData);
-// // });
-//   // data.data.forEach(function(data, i) {
-//   //     var wrapper = visualizationWrapper
-//   //         .append('div')
-//   //         .style({
-//   //             width: width + 'px',
-//   //             height: height + 'px'
-//   //         });
-//   //
-//   //     createMap(wrapper, states, data)
-// // });
-//
-// }
-//
-// function drawBasemap(json, data)
-// {
-//   console.log("basemap", json);
-//   // console.log("data from file", data);
-//   let mapData = new Map();
-//   data.forEach((item,i) => {
-//       mapData.set(item["CountryCode"], item["Total Species"]);
-//   });
-//
-//   // console.log("map = ", mapData);
-//   // console.log(d3.extent(Array.from(mapData.values())));
-//   let color = d3.scaleSequential()
-//     .domain(d3.extent(Array.from(mapData.values())))
-//     .interpolator(d3.interpolateReds)
-//     .unknown("#ddd");
-//
-//   const basemap = g.basemap
-//   .selectAll("path.land")
-//   .data(json.features)
-//   .enter()
-//   .append("path")
-//   .attr("d", path)
-//   .attr("class", "land")
-//   .attr("fill", function (d) {
-//       return color(mapData.get(d.properties.ISO_A3));
-//   });
-// }
-//
-// function drawData(data)
-// {
-//   console.log(data);
-// }
-//
-// // let path = d3.geoPath().projection(projection);
-// // d3.json(urls.basemap).then(function(json) {
-// //   // makes sure to adjust projection to fit all of our regions
-// //   projection.fitSize([
-// //     960, 600
-// //   ], json);
-//   // draw the land and neighborhood outlines
-//   //drawBasemap(json);
-//
-//   //draw data in map
-//   //drawData(data);
+
+function translate(x, y) {
+    return "translate(" + String(x) + "," + String(y) + ")";
+}

@@ -7,6 +7,8 @@ function convertRow(row, index)
       case "Country":
       case "CountryCode":
       case "Region":
+      case "name" :
+      case "category":
         out[col] = row[col];
         break;
       default:

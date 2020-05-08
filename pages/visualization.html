@@ -14,8 +14,10 @@
     <!-- include d3.js modules -->
     <script src="https://d3js.org/d3-array.v2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
-    <script src="../js/vis.js"></script>
-    <script src="../js/dataModified.js"></script>
+    <!-- <script src="../js/vis.js"></script>
+    <script src="../js/dataModified.js"></script> -->
+    <!-- <script src="../js/multipleMap.js"></script>
+    <script src="../js/dataModified.js"></script> -->
     <!-- Load Font Awesome 5 (free) icons -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
@@ -97,46 +99,31 @@
         <h1 class="title">
           <!-- TODO: Change page title -->
           Visualizations
-          <figure class="figure">
-          <svg id="map" height="900" width="960">
-            <g id="basemap"></g>
-            <g id="mammal"></g>
-            <g id="cases"></g>
-            <!-- turn off pointer events for certain groups -->
-            <!-- <g id="streets" pointer-events="none"></g> -->
-            <!-- <g id="outline" pointer-events="none"></g> -->
-
-            <!-- <g id="colorOnMap"></g> -->
-            <g id="tooltip" pointer-events="none"></g>
-            <g id="details" pointer-events="none"></g>
-          </svg>
-          <figcaption>
-            Dharti
-            <!-- <cite>Data Source: <a href="https://data.sfgov.org/City-Infrastructure/311-Cases/vw6y-z8j6">311 Cases for Rec / Park</a> (<a href=" https://data.sfgov.org/Geographic-Locations-and-Boundaries/SF-Find-Neighborhoods/pty2-tcw4">Neighborhoods</a>, <a
-                href="https://data.sfgov.org/Geographic-Locations-and-Boundaries/Streets-Active-and-Retired/3psu-pn9h">Streets</a>)</cite>
-            <br />Dharti Madeka -->
-          </figcaption>
-        </figure>
-        <script type="text/javascript">
-          d3.csv("../data/newData.csv", convertRow).then(drawMapChart);
-        </script>
+        </h1>
+          <p>Kept my visualization in separate page as it takes time to load multiple maps, due to alot of data to plot map</p>
+          <p class="buttons">
+          <a class="button is-small is-primary" href="multiplemap.html">
+            <span class="icon is-medium">
+              <i class="fas fa-chart-line"></i>
+            </span>
+            <span>Multiple Map Visualization</span>
+          </a>
+          <a class="button is-small is-primary" href="barRace.html">
+            <span class="icon is-medium">
+              <i class="fas fa-chart-line"></i>
+            </span>
+            <span>Bar Chart Visualization</span>
+          </a>
+        </p>
         <h1>Encoding</h1>
-        <p>Encoding: Explain to general users how your data is encoded and how to interpret your visualization(s).</p>
+        <p>Data is encoded over map and color. Each Chloropleth map represent number of species endangered in each Taxonomy group. all over the world.</p>
         <h1>Interactivity</h1>
-        <p>Interactivity: Explain to general users how to interact with your visualization(s).</p>
+        <p>Here, I have used highlight and details on demand. Any country is selected from any</p>
         <h1>Finding</h1>
         <p>Findings: Explain a major finding from your visualization to general users.
           This should help support your overall narrative or theme.
           You can pose this in a question/answer format like your prototype page.</p>
-        <!-- <p>This would be an excellent place to describe what this page is for, what to find in different sections, describe any motivation or theme behind your visualizations, and so on.</p>
-
-        <p>You should not use this template unless you intend to customize it. Make it your own. Keep in mind this simple template is over 300 lines! You can see other examples of websites using Bulma at their showcase: <a href="https://bulma.io/expo/">bulma.io/expo/</a>.</p> -->
-
       </div>
-      <!-- End page content -->
-    </div>
-  </section>
-
   <!-- Page footer -->
   <!-- https://bulma.io/documentation/layout/footer/ -->
   <footer class="footer">
@@ -167,6 +154,8 @@
       </p>
     </div>
   </footer>
+</div>
+</section>
   <!-- End page footer -->
 
   <!-- Mobile menu responsiveness -->
