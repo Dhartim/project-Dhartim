@@ -60,6 +60,6 @@ stroke-width: 1px;
   color: white;
 }
 
-#colorLegend {
-  position: fixed;
+.colorLegend {
+  position: absolute;
 }

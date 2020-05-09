@@ -1,5 +1,6 @@
 body{
   padding: 0px;
+  margin 0px;
 }
 .navbar {
   border-radius: 23px;
@@ -49,7 +50,7 @@ img, table {
 #vis div {
     float: left;
     position: relative;
-    margin: 10px;
+    margin: 5px;
     border: 1px solid black;
     border-radius: 10px;
 }

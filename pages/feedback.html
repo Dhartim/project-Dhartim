@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IUCN Red List</title>
+
+    <!-- Load Bulma from CDN (consider saving it to repository instead) -->
+    <!-- https://bulma.io/ -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"> -->
+    <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/simplex/bulmaswatch.min.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </head>
+
+  <body>
+
+  <!-- Page header -->
+  <!-- https://bulma.io/documentation/layout/hero/ -->
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">Endangered Species in Red List </h1>
+        <h2 class="subtitle">Shows visualization of species in IUCN Red List</h2>
+      </div>
+    </div>
+  </section>
+  <!-- End page header -->
+
+  <!-- Page navigation -->
+  <!-- https://bulma.io/documentation/components/navbar/ -->
+  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <!-- TODO: Change link to repository homepage if needed -->
+        <!-- TODO: Change which navbar-item is-active if needed -->
+        <a class="navbar-item" href="../index.html">
+          <span class="icon"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="main-menu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="main-menu" class="navbar-menu has-text-weight-medium">
+        <!-- Left navbar items -->
+        <div class="navbar-start">
+          <a class="navbar-item" href="data.html" title="Data">
+            <span class="icon"><i class="fas fa-table"></i></span>
+            <span>Data</span>
+          </a>
+
+          <!-- TODO: Modify or remove dropdown -->
+          <a class="navbar-item" href="alpha.html">
+            <span class="icon"><i class="fas fa-paw"></i></span>
+            <span>Alpha Prototype</span>
+          </a>
+          <a class="navbar-item" href="beta.html">
+            <span class="icon"><i class="fas fa-pastafarianism"></i></span>
+            <span>Beta Prototype</span>
+          </a>
+          <a class="navbar-item is-active" href="feedback.html">
+            <span class="icon"><i class="fas fa-chart-area"></i></span>
+            <span>Feedback</span>
+          </a>
+            <a class="navbar-item" href="visualization.html">
+              <span class="icon"><i class="fas fa-chart-area"></i></span>
+              <span>Visualizations</span>
+            </a>
+
+        </div>
+
+        <!-- Right navbar items -->
+        <div class="navbar-end">
+          <!-- TODO: Update as needed -->
+
+          <a class="navbar-item" href="about.html" title="About">
+            <span class="icon"><i class="fas fa-info-circle"></i></span>
+            <span>About</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+    <!-- End page navigation -->
+
+    <!-- Begin page content -->
+    <section class="section">
+      <div class="container">
+        <div class="content page-content">
+
+          <h1 class="title">Feedback</h1>
+
+          <h3>Live Feedback from Instructor</h3>
+
+          <p>
+            I met with my professor Sophie Engle over Zoom to get her feedback on the beta version of my prototype
+            She helped me decide with modifications.
+            Here are her main ideas, summarized:
+          </p>
+
+          <ul>
+            <li>
+              Remove Filter and change single map to multiple small map which shows comparision between different countries and Taxonomy.
+            </li>
+            <li>
+              Adding details-on-demand interactivity in the form of a hover tooltip over countries would be helpful with details on count of Endangered species.
+            </li>
+            <li>
+              Change map to proportional Symbol map only if it looks appealing visually.
+            </li>
+          </ul>
+
+          <h3>Online Feedback from Peers</h3>
+
+          <p>
+            Additionally, I received written feedback on my beta prototype from three of my peers in my class, in the form of a rubric on Canvas with comments for each topic (like visual encodings, lie factor, gestalt principles, etc.).
+            Many of their comments helped inform what changes I should make for the final version. Here are some of their most helpful comments:
+          </p>
+          <ul>
+            <li>
+              From Alex Wang:
+              <ul>
+                <li>Visual Encoding is fine as the color represents value of specie number.</li>
+                <li>The diverging color used well so that readers know immediately whether the situation for that area is severe.</li>
+                <li>The use of color, icons and overall design is really nice! Also the style is consistent with the theme.</li>
+              </ul>
+            </li>
+            <li>
+              From Aryan Choudhary:
+              <ul>
+                <li>The basemap of World is centered and is of reasonable size. The thickness of country boundary is good.</li>
+                <li>The details about the species count is helpful to understand the context.</li>
+                <li>The sequential color scale makes it easier to understand the visualization and which country has endangered species.</li>
+                <li>The description gives a lot of context for each data region. Interactivity and its guide help show how to interpret the data.</li>
+                <li>The ability to filter the data based on the species family is really good and the ability to get details on hovering will be very helpful.</li>
+                <li>The design is clean and organized. It seems a little boring because there is a lot of negative space.</li>
+              </ul>
+            </li>
+            <li>
+              From Parisa Hemmati:
+              <ul>
+                <li>Both prototypes are good and easy to understand</li>
+              </ul>
+            </li>
+          </ul>
+
+
+        </div>
+      </div>
+    </section>
+    <!-- End page content -->
+
+    <!-- Page footer -->
+    <!-- https://bulma.io/documentation/layout/footer/ -->
+    <footer class="footer">
+      <div class="content has-text-centered is-size-7">
+        <p>
+          <a href="#top">
+            <span class="fas fa-arrow-up"></span>
+            <span class="has-text-weight-medium">Back to Top</span>
+          </a>
+        </p>
+
+        <p>
+          <!-- TODO: Change to link to your Github repository -->
+          <a href="https://github.com/usf-cs360-spring2020/template-bulma" class="button is-small" style="padding-left: 1em; padding-right: 1em;">
+            <i class="fab fa-github-alt"></i>&nbsp;<strong>Github</strong>
+          </a>
+
+          <a href="https://fontawesome.com/" class="button is-small" style="padding-left: 1em; padding-right: 1em;">
+            <i class="fab fa-font-awesome"></i>&nbsp;<strong>FontAwesome</strong>
+          </a>
+          <a href="https://d3js.org/" class="button is-small" style="padding: 1em;">
+            <img src="https://raw.githubusercontent.com/d3/d3-logo/master/d3.png" style="height: 20px; padding-left: 5px;">
+          </a>
+
+          <a href="https://bulma.io" class="button is-small">
+            <img src="https://bulma.io/images/made-with-bulma--semiblack.png" alt="Made with Bulma" width="128" height="24">
+          </a>
+        </p>
+      </div>
+    </footer>
+  </div>
+  </section>
+    <!-- End page footer -->
+
+    <!-- Mobile menu responsiveness -->
+    <!-- https://bulma.io/documentation/components/navbar/ -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+      if ($navbarBurgers.length > 0) {
+        $navbarBurgers.forEach( el => {
+          el.addEventListener('click', () => {
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
+            el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+          });
+        });
+      }
+    });
+    </script>
+    <!-- End mobile menu responsiveness -->
+    </body>
+  </html>

@@ -10,15 +10,6 @@
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"> -->
     <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/simplex/bulmaswatch.min.css">
     <link rel="stylesheet" href="../style/style.css">
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <!-- include d3.js modules -->
-    <script src="https://d3js.org/d3-array.v2.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
-    <!-- <script src="../js/vis.js"></script>
-    <script src="../js/dataModified.js"></script> -->
-    <!-- <script src="../js/multipleMap.js"></script>
-    <script src="../js/dataModified.js"></script> -->
-    <!-- Load Font Awesome 5 (free) icons -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
 
@@ -41,8 +32,6 @@
   <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
     <div class="container">
       <div class="navbar-brand">
-        <!-- TODO: Change link to repository homepage if needed -->
-        <!-- TODO: Change which navbar-item is-active if needed -->
         <a class="navbar-item" href="../index.html">
           <span class="icon"><i class="fas fa-home"></i></span>
           <span>Home</span>
@@ -72,6 +61,10 @@
             <span class="icon"><i class="fas fa-pastafarianism"></i></span>
             <span>Beta Prototype</span>
           </a>
+          <a class="navbar-item" href="feedback.html">
+            <span class="icon"><i class="fas fa-chart-area"></i></span>
+            <span>Feedback</span>
+          </a>
             <a class="navbar-item is-active" href="visualization.html">
               <span class="icon"><i class="fas fa-chart-area"></i></span>
               <span>Visualizations</span>
@@ -100,29 +93,49 @@
           <!-- TODO: Change page title -->
           Visualizations
         </h1>
-          <p>Kept my visualization in separate page as it takes time to load multiple maps, due to alot of data to plot map</p>
+          <!-- <p>Kept my visualization in separate page as it takes time to load multiple maps, due to alot of data to plot map</p> -->
           <p class="buttons">
-          <a class="button is-small is-primary" href="multiplemap.html">
+          <a class="button is-medium is-primary" href="multiplemap.html">
             <span class="icon is-medium">
               <i class="fas fa-chart-line"></i>
             </span>
             <span>Multiple Map Visualization</span>
           </a>
-          <a class="button is-small is-primary" href="barRace.html">
+          <a class="button is-medium is-primary" href="barRace.html">
             <span class="icon is-medium">
               <i class="fas fa-chart-line"></i>
             </span>
             <span>Bar Chart Visualization</span>
           </a>
         </p>
-        <h1>Encoding</h1>
-        <p>Data is encoded over map and color. Each Chloropleth map represent number of species endangered in each Taxonomy group. all over the world.</p>
+        <!-- <div class=" card">
+          <div class="card-content"> -->
+            <h1>Encoding</h1>
+              <h4>Multiple Map Visaulization</h4>
+                <p> In this visualization, countries are encoded over a geospatial map and number of endangered species in each country is encoded over color. There are multiple map where each represent a Species Taxonomy.</p>
+              <h4>Bar Chart Visaulization</h4>
+              <p>In this visualization, bars are encoded over count on endangered species increased from 1998 till 2020.</p>
+
+          <!-- </div>
+        </div> -->
+                <!-- <p>Data is encoded over map and color. Each Chloropleth map represent number of species endangered in each Taxonomy group. all over the world.</p> -->
         <h1>Interactivity</h1>
-        <p>Here, I have used highlight and details on demand. Any country is selected from any</p>
+        <h4>Multiple Map Visaulization</h4>
+          <p>In this visualization, there are two interactivity details on demand and highlight. here is the gif of it.</p>
+        <h4>Bar Chart Visaulization</h4>
+          <p> In this visualization, there is just bar race animation which shows increase in Endangered species from 1998 till 2020. Here is the gif of it</p>
+        <!-- <p>Here, I have used highlight and details on demand. Any country is selected from any</p> -->
         <h1>Finding</h1>
-        <p>Findings: Explain a major finding from your visualization to general users.
+        <h4>Multiple Map Visaulization</h4>
+          <p>This visualization will answer the question : <strong> How many and which species Endangered in different countries? </strong> Using the interactivity and having multiple maps , it is easy to compare count of Endangered species in different countries for different species.
+          Additionally, also mentioned 2 more maps which shows Total by Taxonomy and Total Species Endangered in particular county.</p>
+        <h4>Bar Chart Visaulization</h4>
+          <p> This bar chart shows if there is decrease or increase in number of species Endangered and in which
+            Taxonomy over a period of time, i.e. from 1998 till 2020. It also shows that highest species Endangered are
+            plants, due to deforestation followed by fishes , which is Endangered due to poaching and sea populaiton.</p>
+        <!-- <p>Findings: Explain a major finding from your visualization to general users.
           This should help support your overall narrative or theme.
-          You can pose this in a question/answer format like your prototype page.</p>
+          You can pose this in a question/answer format like your prototype page.</p> -->
       </div>
   <!-- Page footer -->
   <!-- https://bulma.io/documentation/layout/footer/ -->

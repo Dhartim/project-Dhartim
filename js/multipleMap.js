@@ -19,17 +19,18 @@ function drawMapChart()
         projection.fitExtent([[0, 0], [400, 600]], data[0]);
         visualizeMap(data);
     });
-
     // setup projection
     window.projection = d3.geoNaturalEarth1();
     // setup path generator (note it is a GEO path, not a normal path)
     window.path = d3.geoPath().projection(projection);
 
+    // svg.append("p").text("Data Source : https://www.iucnredlist.org/resources/summary-statistics Licensed by : IUCN 2020. IUCN Red List of Threatened Species. Version 2020-1 <www.iucnredlist.org> Dharti Madeka");
+
 }
 
 function visualizeMap(data)
 {
-    window.width = 455;
+    window.width = 459;
     window.height = 400;
     geojson = data[0];
     csvData = data[1];
@@ -49,8 +50,10 @@ function visualizeMap(data)
             .append('div')
             .attr('id' , data.key)
             .style('width' , width)
-            .style('height' , 400);
+            .style('height' , height);
         createMap(wrapper, geojson , data, domainValues);
+
+        // visualizationWrapper.append("p").
     });
     //legend
     drawLegend();
@@ -84,6 +87,7 @@ function drawLegend() {
       .attr("stop-color", d => d.color);
 
     svg.append('g')
+      .attr("class" , "colorLegend")
       .attr("transform", translate(200, 20))
       .append("rect")
       .attr('transform', translate(80, 30))
@@ -108,7 +112,7 @@ function createMap(wrapper, geojson, data, domainValues)
           .attr('class', 'legend');
 
      let svg = wrapper.append('svg')
-        .attr('id' , '#inner'+data.key)
+        .attr('id' , 'inner'+data.key)
         .style('width', width)
         .style('height', 400);
 
@@ -137,7 +141,7 @@ function createMap(wrapper, geojson, data, domainValues)
               let country = d3.select(this);
               country.raise();
               country.classed("active", true);  //d3.select(!this).lower();
-              notify("."+d.properties.ISO_A3, 'select', max, min)
+              notify("."+d.properties.ISO_A3, 'select')
           })
           .on('mouseleave', function(d) {
             d3.select("body").select("#colorLegend").select("#max").text("max");
@@ -173,7 +177,7 @@ function createMap(wrapper, geojson, data, domainValues)
           .on('unselect', function(self) {
               self.node().parentNode.parentNode.getElementsByTagName('p')[0].innerHTML = data.key;
           });
-
+          
 
           //call all Interactivity
       function notify(selector, eventName) {
