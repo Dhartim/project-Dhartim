@@ -51,24 +51,50 @@
             <span class="icon"><i class="fas fa-table"></i></span>
             <span>Data</span>
           </a>
-
           <!-- TODO: Modify or remove dropdown -->
-          <a class="navbar-item" href="alpha.html">
-            <span class="icon"><i class="fas fa-paw"></i></span>
-            <span>Alpha Prototype</span>
-          </a>
-          <a class="navbar-item" href="beta.html">
-            <span class="icon"><i class="fas fa-pastafarianism"></i></span>
-            <span>Beta Prototype</span>
-          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="alpha.html">
+            <span class="icon"><i class="fas fa-chart-line"></i></span>
+              Prototypes
+            </a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="alpha.html">
+                <span class="icon"><i class="fas fa-paw"></i></span>
+                <span>Alpha Prototype</span>
+              </a>
+              <a class="navbar-item" href="beta.html">
+                  <span class="icon"><i class="fas fa-pastafarianism"></i></span>
+                <span>Beta Prototype</span>
+              </a>
+            </div>
+          </div>
+          <!-- TODO: Modify or remove dropdown -->
+
           <a class="navbar-item" href="feedback.html">
-            <span class="icon"><i class="fas fa-chart-area"></i></span>
+            <span class="icon"><i class="fas fa-users"></i></span>
             <span>Feedback</span>
           </a>
-            <a class="navbar-item is-active" href="visualization.html">
-              <span class="icon"><i class="fas fa-chart-area"></i></span>
-              <span>Visualizations</span>
+          <!-- TODO: Modify or remove dropdown -->
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-active" href="visualization.html" title="Visualizations">
+            <span class="icon"><i class="fas fa-chart-area"></i></span>
+              Visualization
             </a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="multiplemap.html">
+                <span class="icon is-medium">
+                  <i class="fas fa-globe-asia"></i>
+                </span>
+                <span>Multiple Map Visualization</span>
+              </a>
+              <a class="navbar-item" href="barRace.html">
+                <span class="icon is-medium">
+                  <i class="far fa-chart-bar"></i>
+                </span>
+                <span>Bar Chart Visualization</span>
+              </a>
+            </div>
+          </div>
         </div>
 
         <!-- Right navbar items -->
@@ -93,49 +119,63 @@
           <!-- TODO: Change page title -->
           Visualizations
         </h1>
-          <!-- <p>Kept my visualization in separate page as it takes time to load multiple maps, due to alot of data to plot map</p> -->
           <p class="buttons">
           <a class="button is-medium is-primary" href="multiplemap.html">
             <span class="icon is-medium">
-              <i class="fas fa-chart-line"></i>
+              <i class="fas fa-globe-asia"></i>
             </span>
             <span>Multiple Map Visualization</span>
           </a>
           <a class="button is-medium is-primary" href="barRace.html">
             <span class="icon is-medium">
-              <i class="fas fa-chart-line"></i>
+              <i class="far fa-chart-bar"></i>
             </span>
             <span>Bar Chart Visualization</span>
           </a>
+          <p>P.S. Request to wait for few minutes to load map visualization as it consist of multiple geospatial maps</p>
         </p>
         <!-- <div class=" card">
           <div class="card-content"> -->
             <h1>Encoding</h1>
               <h4>Multiple Map Visaulization</h4>
-                <p> In this visualization, countries are encoded over a geospatial map and number of endangered species in each country is encoded over color. There are multiple map where each represent a Species Taxonomy.</p>
+                <p> In the map, data is encoded on as color on a multiple choropleth visualization on an equal area map projection.
+                  Each colored shape is a country, and data is encoded as follows :
+                  <li> Location of the country : where in the world the country is located.</li>
+                  <li>Area of country on the map : the area of the country in the world.</li>
+                  <li>Color of country : Shows Species count in different Taxonomy.
+                    Countries with "0" count is encoded with grey color</li>
+                </p>
+
               <h4>Bar Chart Visaulization</h4>
-              <p>In this visualization, bars are encoded over count on endangered species increased from 1998 till 2020.</p>
+              <p>In this visualization, bars are encoded over count of endangered species in each
+                Taxonomy increased / decreased from 1998 till 2020.
+              </p>
 
           <!-- </div>
         </div> -->
                 <!-- <p>Data is encoded over map and color. Each Chloropleth map represent number of species endangered in each Taxonomy group. all over the world.</p> -->
         <h1>Interactivity</h1>
-        <h4>Multiple Map Visaulization</h4>
-          <p>In this visualization, there are two interactivity details on demand and highlight. here is the gif of it.</p>
-        <h4>Bar Chart Visaulization</h4>
-          <p> In this visualization, there is just bar race animation which shows increase in Endangered species from 1998 till 2020. Here is the gif of it</p>
-        <!-- <p>Here, I have used highlight and details on demand. Any country is selected from any</p> -->
+          <h4>Multiple Map Visaulization</h4>
+            <p>In this visualization, there are two interactivity details on demand and highlight.
+              So when mouse is hovered over any geographic location, then it will show county name in tool tip
+              and highlight and raise that country with black boundary.
+              Also there is change in title of map to show count of Endangered species in that particular country as well as change in legend max and min value which
+              shows legend for that particular map on which mouse is pointed currently.
+              Here is the gif of it.</p>
+          <h4>Bar Chart Visaulization</h4>
+            <p> In this visualization, there is just bar race animation. Each Bar is shows different Taxonomy in IUCN Red List, height of bar
+              shows increase and decrease in the count of number of Endangered species from 1998 till 2020. Here is the gif of it</p>
         <h1>Finding</h1>
         <h4>Multiple Map Visaulization</h4>
-          <p>This visualization will answer the question : <strong> How many and which species Endangered in different countries? </strong> Using the interactivity and having multiple maps , it is easy to compare count of Endangered species in different countries for different species.
+          <p>This visualization will answer the question : <strong> How many and which species are Endangered in different countries in 2020 ? </strong>
+            Using the interactivity and having multiple maps ,
+            it is easy to compare count of Endangered species in different countries for different species.
           Additionally, also mentioned 2 more maps which shows Total by Taxonomy and Total Species Endangered in particular county.</p>
         <h4>Bar Chart Visaulization</h4>
-          <p> This bar chart shows if there is decrease or increase in number of species Endangered and in which
-            Taxonomy over a period of time, i.e. from 1998 till 2020. It also shows that highest species Endangered are
-            plants, due to deforestation followed by fishes , which is Endangered due to poaching and sea populaiton.</p>
-        <!-- <p>Findings: Explain a major finding from your visualization to general users.
-          This should help support your overall narrative or theme.
-          You can pose this in a question/answer format like your prototype page.</p> -->
+          <p> This bar chart gives answer to the question: <strong>If there is increase or decrease in the number of Endangered Species and which family from 1998 - 2020 ? </strong>
+            It shows if there is that there is increase in Plant family followed by Fish
+            Taxonomy over a period of time, i.e. from 1998 till 2020. It also shows that plant species are Endangered
+            due to deforestation and fishes due to poaching and sea pollution.</p>
       </div>
   <!-- Page footer -->
   <!-- https://bulma.io/documentation/layout/footer/ -->

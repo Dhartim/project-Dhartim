@@ -12,8 +12,6 @@ function drawMapChart()
     Object.values(files).forEach(function(url, index) {
         promises.push(d3.json(url));
     });
-
-    //console.log("promises = " , promises);
     Promise.all(promises).then(function(data) {
         // console.log(data); //check if all data was loaded
         projection.fitExtent([[0, 0], [400, 600]], data[0]);
@@ -23,9 +21,6 @@ function drawMapChart()
     window.projection = d3.geoNaturalEarth1();
     // setup path generator (note it is a GEO path, not a normal path)
     window.path = d3.geoPath().projection(projection);
-
-    // svg.append("p").text("Data Source : https://www.iucnredlist.org/resources/summary-statistics Licensed by : IUCN 2020. IUCN Red List of Threatened Species. Version 2020-1 <www.iucnredlist.org> Dharti Madeka");
-
 }
 
 function visualizeMap(data)
@@ -45,15 +40,12 @@ function visualizeMap(data)
             domainValues.set(key, data.values[key]);
           }
         }
-        // console.log(domainValues);
         let wrapper = visualizationWrapper
             .append('div')
             .attr('id' , data.key)
             .style('width' , width)
             .style('height' , height);
         createMap(wrapper, geojson , data, domainValues);
-
-        // visualizationWrapper.append("p").
     });
     //legend
     drawLegend();
@@ -177,7 +169,6 @@ function createMap(wrapper, geojson, data, domainValues)
           .on('unselect', function(self) {
               self.node().parentNode.parentNode.getElementsByTagName('p')[0].innerHTML = data.key;
           });
-          
 
           //call all Interactivity
       function notify(selector, eventName) {

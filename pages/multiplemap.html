@@ -5,28 +5,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>IUCN Red List</title>
-
-  <!-- Load Bulma from CDN (consider saving it to repository instead) -->
-  <!-- https://bulma.io/ -->
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"> -->
   <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/simplex/bulmaswatch.min.css">
   <link rel="stylesheet" href="../style/style.css">
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <!-- include d3.js modules -->
   <script src="https://d3js.org/d3-array.v2.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
-  <!-- <script src="../js/vis.js"></script>
-    <script src="../js/dataModified.js"></script> -->
   <script src="../js/multipleMap.js"></script>
-  <script src="../js/dataModified.js"></script>
+  <!-- <script src="../js/dataModified.js"></script> -->
   <!-- Load Font Awesome 5 (free) icons -->
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 
 <body>
-
-  <!-- Page header -->
-  <!-- https://bulma.io/documentation/layout/hero/ -->
   <section class="hero is-primary is-bold">
     <div class="hero-body">
       <div class="container">
@@ -38,12 +29,9 @@
   <!-- End page header -->
 
   <!-- Page navigation -->
-  <!-- https://bulma.io/documentation/components/navbar/ -->
   <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
     <div class="container">
       <div class="navbar-brand">
-        <!-- TODO: Change link to repository homepage if needed -->
-        <!-- TODO: Change which navbar-item is-active if needed -->
         <a class="navbar-item" href="../index.html">
           <span class="icon"><i class="fas fa-home"></i></span>
           <span>Home</span>
@@ -63,31 +51,53 @@
             <span class="icon"><i class="fas fa-table"></i></span>
             <span>Data</span>
           </a>
-
           <!-- TODO: Modify or remove dropdown -->
-          <a class="navbar-item" href="alpha.html">
-            <span class="icon"><i class="fas fa-paw"></i></span>
-            <span>Alpha Prototype</span>
-          </a>
-          <a class="navbar-item" href="beta.html">
-            <span class="icon"><i class="fas fa-pastafarianism"></i></span>
-            <span>Beta Prototype</span>
-          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="alpha.html">
+            <span class="icon"><i class="fas fa-chart-line"></i></span>
+              Prototypes
+            </a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="alpha.html">
+                <span class="icon"><i class="fas fa-paw"></i></span>
+                <span>Alpha Prototype</span>
+              </a>
+              <a class="navbar-item" href="beta.html">
+                  <span class="icon"><i class="fas fa-pastafarianism"></i></span>
+                <span>Beta Prototype</span>
+              </a>
+            </div>
+          </div>
+          <!-- TODO: Modify or remove dropdown -->
+
           <a class="navbar-item" href="feedback.html">
-            <span class="icon"><i class="fas fa-chart-area"></i></span>
+            <span class="icon"><i class="fas fa-users"></i></span>
             <span>Feedback</span>
           </a>
-          <a class="navbar-item is-active" href="visualization.html">
+          <!-- TODO: Modify or remove dropdown -->
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-active" href="visualization.html" title="Visualizations">
             <span class="icon"><i class="fas fa-chart-area"></i></span>
-            <span>Visualizations</span>
-          </a>
+              Visualization
+            </a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="multiplemap.html">
+                <span class="icon is-medium">
+                  <i class="fas fa-globe-asia"></i>
+                </span>
+                <span>Multiple Map Visualization</span>
+              </a>
+              <a class="navbar-item" href="barRace.html">
+                <span class="icon is-medium">
+                  <i class="far fa-chart-bar"></i>
+                </span>
+                <span>Bar Chart Visualization</span>
+              </a>
+            </div>
+          </div>
 
         </div>
-
-        <!-- Right navbar items -->
         <div class="navbar-end">
-          <!-- TODO: Update as needed -->
-
           <a class="navbar-item" href="about.html" title="About">
             <span class="icon"><i class="fas fa-info-circle"></i></span>
             <span>About</span>
@@ -96,7 +106,8 @@
       </div>
     </div>
   </nav>
-  <section class="section is-full">
+  <!-- End of Nav Bar  -->
+  <section class="section">
     <div class="container">
       <div class="content">
         <svg id="colorLegend" height="100" width="960">
