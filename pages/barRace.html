@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,6 +9,7 @@
   <link rel="stylesheet" href="../style/style.css">
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
+
 <body>
   <!-- Page header -->
   <!-- https://bulma.io/documentation/layout/hero/ -->
@@ -48,7 +50,7 @@
           <!-- TODO: Modify or remove dropdown -->
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link" href="alpha.html">
-            <span class="icon"><i class="fas fa-chart-line"></i></span>
+              <span class="icon"><i class="fas fa-chart-line"></i></span>
               Prototypes
             </a>
             <div class="navbar-dropdown">
@@ -57,7 +59,7 @@
                 <span>Alpha Prototype</span>
               </a>
               <a class="navbar-item" href="beta.html">
-                  <span class="icon"><i class="fas fa-pastafarianism"></i></span>
+                <span class="icon"><i class="fas fa-pastafarianism"></i></span>
                 <span>Beta Prototype</span>
               </a>
             </div>
@@ -78,13 +80,19 @@
                 <span class="icon is-medium">
                   <i class="fas fa-globe-asia"></i>
                 </span>
-                <span>Multiple Map Visualization</span>
+                <span>Country vs Species Map Visualization</span>
+              </a>
+              <a class="navbar-item" href="barchart.html">
+                <span class="icon is-medium">
+                  <i class="far fa-chart-bar"></i>
+                </span>
+                <span>Region Vs IUCN Categories Visualization</span>
               </a>
               <a class="navbar-item" href="barRace.html">
                 <span class="icon is-medium">
                   <i class="far fa-chart-bar"></i>
                 </span>
-                <span>Bar Chart Visualization</span>
+                <span>Bar Race Visualization</span>
               </a>
             </div>
           </div>
@@ -105,13 +113,29 @@
     <div class="container">
       <!-- Begin page content -->
       <div class="content">
-        <div id="observablehq-1e5d7f55" style="height: 500px;"></div>
-        <script type="module">
-          import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+        <h2>Bar Race Visualization</h2>
+        <div id="observablehq-1e5d7f55" style="width:950px">
+          <script type="module">
+            import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
         import define from "https://api.observablehq.com/@dhartim/bar-chart-race-explained.js?v=3";
         const inspect = Inspector.into("#observablehq-1e5d7f55");
         (new Runtime).module(define, name => (name === "chart") && inspect());
         </script>
+        </div>
+        <h2>Encoding</h2>
+        <p>In this visualization, bars are encoded over count of endangered species in each
+          Taxonomy increased / decreased from 1998 till 2020.
+        </p>
+        <h2>Interactivity</h2>
+        <p> In this visualization, there is just bar race animation. Each Bar is shows different Taxonomy in IUCN Red List, height of bar
+          shows increase and decrease in the count of number of Endangered species from 1998 till 2020. Here is the gif of it
+        </p>
+        <h2>Finding</h2>
+        <p> This bar chart gives answer to the question: <strong>If there is increase or decrease in the number of Endangered Species and which family from 1998 - 2020 ? </strong>
+          It shows if there is that there is increase in Plant family followed by Fish
+          Taxonomy over a period of time, i.e. from 1998 till 2020. It also shows that plant species are Endangered
+          due to deforestation and fishes due to poaching and sea pollution.
+        </p>
       </div>
     </div>
   </section>
@@ -163,5 +187,4 @@
   </script>
   <!-- End mobile menu responsiveness -->
 </body>
-
 </html>

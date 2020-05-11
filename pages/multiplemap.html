@@ -85,13 +85,19 @@
                 <span class="icon is-medium">
                   <i class="fas fa-globe-asia"></i>
                 </span>
-                <span>Multiple Map Visualization</span>
+                <span>Country vs Species Map Visualization</span>
+              </a>
+              <a class="navbar-item" href="barchart.html">
+                <span class="icon is-medium">
+                  <i class="far fa-chart-bar"></i>
+                </span>
+                <span>Region Vs IUCN Categories Visualization</span>
               </a>
               <a class="navbar-item" href="barRace.html">
                 <span class="icon is-medium">
                   <i class="far fa-chart-bar"></i>
                 </span>
-                <span>Bar Chart Visualization</span>
+                <span>Bar Race Visualization</span>
               </a>
             </div>
           </div>
@@ -110,16 +116,99 @@
   <section class="section">
     <div class="container">
       <div class="content">
+        <h2>Country vs Species Map Visualization </h2>
+        <button class="button is-primary" onclick="showViz()" id="toggle">Load Map</button>
+        <script type="text/javascript">
+          function showViz() {
+            let btn = document.getElementById("toggle")
+            let x = document.getElementById("vis");
+            let svg = document.getElementById("colorLegend");
+            if (x.style.display === "none") {
+                console.log(btn.value)
+                console.log("came in IF");
+                btn.textContent = "Hide Map";
+                x.style.display = "block";
+                svg.style.display = "block";
+                drawMapChart();
+            } else {
+                console.log("Came in Else")
+                btn.textContent = "Load Map";
+                x.style.display = "none";
+                svg.style.display = "none";
+            }
+          }
+        </script>
         <svg id="colorLegend" height="100" width="960">
         </svg>
-        <div id="vis" class="is-full">
+        <div class="columns">
+        <div id="vis" class="column is-full" style="display: none">
         </div>
-        <script type="text/javascript">
-          drawMapChart()
-        </script>
+      <!-- <script type="text/javascript">
+        drawMapChart()
+      </script> -->
       </div>
+      <p>P.S. Request to wait for few minutes to load map visualization as it consist of multiple geospatial maps</p>
+      <h2>Encoding</h2>
+      <p> In the map, data is encoded on as color on a multiple choropleth visualization on an equal area map projection.
+        Each colored shape is a country, and data is encoded as follows :
+        <li> Location of the country : where in the world the country is located.</li>
+        <li>Area of country on the map : the area of the country in the world.</li>
+        <li>Color of country : Shows Species count in different Taxonomy.
+          Countries with "0" count is encoded with grey color</li>
+      </p>
+      <h2>Interactivity</h2>
+      <p>First of all click on button to load map and wait for few minutes so that map is loaded completely.</p>
+
+      <p>  In this visualization, there are two interactivity details on demand and highlight.
+        So when mouse is hovered over any geographic location, then it will show county name in tool tip
+        and highlight and raise that country with black boundary.
+        Also there is change in title of map to show count of Endangered species in that particular country as well as change in legend max and min value which
+        shows legend for that particular map on which mouse is pointed currently.
+        Here is the gif of it.
+      </p>
+      <h2>Finding</h2>
+      <p>This visualization will answer the question : <strong> How many and which species are Endangered in different countries in 2020 ? </strong>
+        Using the interactivity and having multiple maps ,
+        it is easy to compare count of Endangered species in different countries for different species.
+      Additionally, also mentioned 2 more maps which shows Total by Taxonomy and Total Species Endangered in particular county.
+    </p>
     </div>
+  </div>
   </section>
+  <!-- Page footer -->
+  <!-- https://bulma.io/documentation/layout/footer/ -->
+  <footer class="footer">
+    <div class="content has-text-centered is-size-7">
+      <p>
+        <a href="#top">
+          <span class="fas fa-arrow-up"></span>
+          <span class="has-text-weight-medium">Back to Top</span>
+        </a>
+      </p>
+
+      <p>
+        <!-- TODO: Change to link to your Github repository -->
+        <a href="https://github.com/usf-cs360-spring2020/template-bulma" class="button is-small" style="padding-left: 1em; padding-right: 1em;">
+          <i class="fab fa-github-alt"></i>&nbsp;<strong>Github</strong>
+        </a>
+
+        <a href="https://fontawesome.com/" class="button is-small" style="padding-left: 1em; padding-right: 1em;">
+          <i class="fab fa-font-awesome"></i>&nbsp;<strong>FontAwesome</strong>
+        </a>
+        <a href="https://d3js.org/" class="button is-small" style="padding: 1em;">
+          <img src="https://raw.githubusercontent.com/d3/d3-logo/master/d3.png" style="height: 20px; padding-left: 5px;">
+        </a>
+
+        <a href="https://bulma.io" class="button is-small">
+          <img src="https://bulma.io/images/made-with-bulma--semiblack.png" alt="Made with Bulma" width="128" height="24">
+        </a>
+      </p>
+    </div>
+  </footer>
+  <!-- End page footer -->
+
+  <!-- Mobile menu responsiveness -->
+  <!-- https://bulma.io/documentation/components/navbar/ -->
   <script>
   document.addEventListener('DOMContentLoaded', () => {
     const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
@@ -136,5 +225,6 @@
     }
   });
   </script>
-    </body>
-  </html>
+  <!-- End mobile menu responsiveness -->
+  </body>
+</html>

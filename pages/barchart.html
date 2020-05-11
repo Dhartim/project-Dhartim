@@ -5,13 +5,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>IUCN Red List</title>
-
-  <!-- Load Bulma from CDN (consider saving it to repository instead) -->
-  <!-- https://bulma.io/ -->
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"> -->
   <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/simplex/bulmaswatch.min.css">
   <link rel="stylesheet" href="../style/style.css">
-  <!-- Load Font Awesome 5 (free) icons -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <!-- include d3.js modules -->
+  <script src="https://d3js.org/d3-array.v2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
+  <script src="../js/barchart.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 
@@ -53,11 +53,10 @@
             <span class="icon"><i class="fas fa-table"></i></span>
             <span>Data</span>
           </a>
-
           <!-- TODO: Modify or remove dropdown -->
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link" href="alpha.html">
-            <span class="icon"><i class="fas fa-chart-line"></i></span>
+              <span class="icon"><i class="fas fa-chart-line"></i></span>
               Prototypes
             </a>
             <div class="navbar-dropdown">
@@ -66,7 +65,7 @@
                 <span>Alpha Prototype</span>
               </a>
               <a class="navbar-item" href="beta.html">
-                  <span class="icon"><i class="fas fa-pastafarianism"></i></span>
+                <span class="icon"><i class="fas fa-pastafarianism"></i></span>
                 <span>Beta Prototype</span>
               </a>
             </div>
@@ -79,8 +78,8 @@
           </a>
           <!-- TODO: Modify or remove dropdown -->
           <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link" href="visualization.html" title="Visualizations">
-            <span class="icon"><i class="fas fa-chart-area"></i></span>
+            <a class="navbar-link is-active" href="visualization.html" title="Visualizations">
+              <span class="icon"><i class="fas fa-chart-area"></i></span>
               Visualization
             </a>
             <div class="navbar-dropdown">
@@ -104,14 +103,13 @@
               </a>
             </div>
           </div>
-
         </div>
 
         <!-- Right navbar items -->
         <div class="navbar-end">
           <!-- TODO: Update as needed -->
 
-          <a class="navbar-item is-active" href="about.html" title="About">
+          <a class="navbar-item" href="about.html" title="About">
             <span class="icon"><i class="fas fa-info-circle"></i></span>
             <span>About</span>
           </a>
@@ -120,66 +118,45 @@
     </div>
   </nav>
   <!-- End page navigation -->
-  <!-- start of body -->
   <section class="section">
     <div class="container">
-      <!-- Profile box -->
-
-      <article class="media">
-        <!-- TODO: Replace with profile photo -->
-        <figure class="media-left">
-          <p class="image is-128x128"><img class="is-rounded" src="../res/profile.jpg" /></p>
-        </figure>
-        <div class="box">
-          <div class="media-content">
-            <div class="content">
-              <!-- TODO: Replace with contact information -->
-              <p>
-                <strong>Dharti Madeka</strong><br />
-                CS Major, <a href="https://www.usfca.edu/">University of San Francisco</a><br />
-                <em>Expected Graduation: May, 2020</em><br />
-                <i class="fas fa-envelope"></i> <a href="mailto:dpmadeka@dons.usfca.edu">dpmadeka@dons.usfca.edu</a>
-                <br />
-                <i class="fab fa-github-alt"></i> <a href="https://github.com/Dhartim">Github</a>
-                <br />
-                <i class="fab fa-linkedin-in"></i> <a href="https://www.linkedin.com/in/ dharti-madeka">Linkedin</a>
-                <br />
-              </p>
-              <p>
-                I choose this dataset, becuase I have love for Animals and would like to know that since environment is
-                changing how it is affecting animals.
-                Is animals only threatened by human or they can extinct in wild too ?
-                Also, this gives information on new species discovered and if they are in danger. Using this project,
-                can spread awareness of saving animals and plants.
-              </p>
-
-              <!-- TODO: Replace or remove tags -->
-              <!-- https://bulma.io/documentation/elements/tag/ -->
-              <div class="heading">Skills</div>
-
-              <div class="tags">
-                <span class="tag">Java</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">Github / Git</span>
-                <span class="tag">BootStrap</span>
-                <span class="tag">REST</span>
-                <span class="tag">UI/UX Design thinking</span>
-                <span class="tag">ReactJS</span>
-                <span class="tag">MySQL</span>
-                <span class="tag">OracleDB</span>
-                <span class="tag">PostgreSQL</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-      <!-- End profile box -->
-
+      <div class="content">
+        <h2>Region Vs IUCN Categories Visualization</h2>
+      <!-- start of visualization -->
+      <p> IUCN Category : <select class="opt">
+          <option value="CR">CR (Critically Endangered)</option>
+          <option value="EN">EN (Endangered)</option>
+          <option value="EX">EX (Extinct)</option>
+          <option value="LC">LC (Least Concern )</option>
+          <option value="VU">VU (Vulnerable)</option>
+        </select></p><br>
+      <svg id="chart" width="900" height="600"></svg>
+      <div>
+        Sort Values
+        <input class="sort" type="checkbox" id="checkBox">
+      </div>
+      <h2>Encoding </h2>
+      <p>The data is encoded over bars. Each bar represents Number of Endangered species
+        in each categories across each region. Width and number is summation of species in that particular
+        region in that particular IUCN Category.
+      </p>
+      <h2>Interactivity</h2>
+      <p>Interactivity used are Filtering , Sorting and Zoom. Filtering will filter out
+        IUCN Category and show bars accordingly in each region.
+        Sorting will sort bars in decreasing in the visualization. Zoom will increase bar width a little when zoomed in. Here is .gif of it.
+      </p>
+      <h2>Finding</h2>
+      <p>This visualization helps to answer the question: <strong> Which Region and how many species fall in various IUCN category? </strong>It shows that North America rank 1st in Extinct species Category.
+         While Sub-Saharan Africa is highest in the rest, i.e. Critically Endangered, Endangered and Vulnerable.
+         Also there is highest number of species in Least Concern in Sub-Saharan Africa too, it is due to variety of species found in Africa.
+       </p>
+    </div>
     </div>
   </section>
 
+  <script type="text/javascript">
+    d3.csv("../data/region.csv", d3.autoType).then(drawBarChart);
+  </script>
   <!-- Page footer -->
   <!-- https://bulma.io/documentation/layout/footer/ -->
   <footer class="footer">
@@ -217,7 +194,6 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
       if ($navbarBurgers.length > 0) {
         $navbarBurgers.forEach(el => {
           el.addEventListener('click', () => {
@@ -231,6 +207,9 @@
     });
   </script>
   <!-- End mobile menu responsiveness -->
+</body>
+
+</html>
 </body>
 
 </html>
