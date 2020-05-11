@@ -18,7 +18,7 @@ function chart(data, input) {
     var speed = 0
 
 		var svg = d3.select("#chart"),
-			margin = {top: 35, left: 35, bottom: 5, right: -15},
+			margin = {top: 35, left: 40, bottom: 5, right: -15},
 			width = +svg.attr("width") - margin.left - margin.right,
 			height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -58,7 +58,7 @@ function chart(data, input) {
 
 		svg.append("rect").attr("class", "block")
 			.attr("x", 0)
-			.attr("y", 0 + margin.top)
+			.attr("y", 0 + margin.left)
 			.attr("height", height - margin.bottom)
 			.attr("width", margin.left)
 			.attr("fill", "#fff");
