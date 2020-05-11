@@ -124,14 +124,11 @@
             let x = document.getElementById("vis");
             let svg = document.getElementById("colorLegend");
             if (x.style.display === "none") {
-                console.log(btn.value)
-                console.log("came in IF");
                 btn.textContent = "Hide Map";
                 x.style.display = "block";
                 svg.style.display = "block";
                 drawMapChart();
             } else {
-                console.log("Came in Else")
                 btn.textContent = "Load Map";
                 x.style.display = "none";
                 svg.style.display = "none";
